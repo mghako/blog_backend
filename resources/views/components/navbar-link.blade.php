@@ -1,5 +1,5 @@
-<div>
-    <a {{$attributes(["class"=> "hover:bg-gray-400 rounded py-2 px-4 mx-2 uppercase"]) }}>
-        {{ $slot }}
-    </a>
-</div>
+
+<a {{$attributes(["class"=> "hover:bg-black hover:text-white focus:bg-black focus:text-white rounded py-2 px-4 mx-2 uppercase"],) }}>
+    {{ $slot }}
+</a>
+
