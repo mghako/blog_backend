@@ -1,4 +1,4 @@
-<footer class="w-full border-t bg-white pb-12">
+<footer class="w-full border-t bg-gray-100 pb-12">
     <div class="w-full container mx-auto flex flex-col items-center">
         <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
             <a href="#" class="uppercase px-3">About Us</a>

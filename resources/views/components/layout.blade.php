@@ -9,7 +9,7 @@
     <meta name="description" content="">
 
     <!-- Tailwind -->
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -28,7 +28,24 @@
     @include('partials._header')
 
     <div class="container mx-auto flex flex-wrap py-6">
-
+        <div class="absolute top-10 right-10">
+            @auth
+                <a
+                    href="#"
+                    x-data="{}"
+                    @click.prevent="document.querySelector('#logout-form').submit()"
+                >
+                    Log Out
+                </a>
+                <form id="logout-form" method="POST" action="/logout" class="hidden">
+                    @csrf
+                </form>
+            @else
+            @if(url()->current() === '/login')
+                <a href="/login">Login</a>
+            @endif
+            @endauth
+        </div>
         <!-- Posts Section -->
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 
@@ -41,7 +58,7 @@
         <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
 
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-                <p class="text-xl font-semibold pb-5">About Us</p>
+                <p class="text-xl font-semibold pb-5">About mrhako.me</p>
                 <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
                 <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
                     Get to know us

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PostController;
-use App\Models\Post;
+use Clockwork\Request\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,14 @@ Route::get('/', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+
+
+// Auth Controller
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+
+Route::get('login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('login', [LoginController::class, 'login'])->middleware('guest');
+Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
+
+Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('auth');
