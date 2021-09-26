@@ -19,4 +19,5 @@
             </a>
         </div>
     </x-slot>
+    {{$slot}}
 </x-navbar>

@@ -22,5 +22,5 @@
     @endif
 
     <!-- Pagination -->
-    {{-- {{$posts->links()}} --}}
+    {{$posts->links()}}
 </x-layout>
