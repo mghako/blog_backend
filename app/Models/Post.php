@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'category_id', 'tite', 'content', 'cover_photo', 'published_at'
+        'user_id', 'thumbnail', 'title', 'slug','content', 'published_at', 'category_id'
     ];
     protected $casts = [
         'published_at' => 'datetime',
@@ -50,5 +51,12 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function setSlugAttribute($value) {
+        $this->attributes['slug'] = Str::slug($value, '-');
+    }
+
+    // public function setPublishedAtAttribute() {
+    //     $this->attributes['slug'] = now();
+    // }
 
 }
