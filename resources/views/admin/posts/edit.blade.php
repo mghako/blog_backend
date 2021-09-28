@@ -8,7 +8,11 @@
                 <x-form.label name="category"/>
                 <select name="category_id" id="category_id" class="block mx-auto">
                     @foreach (\App\Models\Category::all() as $category)
-                    <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected':''}} >{{ucwords($category->name)}}</option>
+                    <option
+                        value="{{ $category->id }}"
+                        {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}
+                        >{{ ucwords($category->name) }}
+                    </option>
                     @endforeach
                 </select>
             </x-form.field>

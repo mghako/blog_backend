@@ -30,6 +30,7 @@
     <div class="container mx-auto flex flex-wrap py-6">
         <div class="absolute top-10 right-10 space-x-10">
             @auth
+            <a href="/admin/posts/create" class="inline-flex border-2 px-2 py-1 border-gray-200 hover:bg-black hover:text-white {{request()->is('/admin/posts/create') == '/admin/posts/create' ? 'bg-gray-400' : ''}}">Add Post</a>
             <a href="/admin/posts" class="inline-flex border-2 px-2 py-1 border-gray-200 hover:bg-black hover:text-white {{request()->is('admin/posts') == 'admin/posts' ? 'bg-gray-400' : ''}}">All Posts</a>
             <a
                 class="inline-flex border-2 px-2 py-1 hover:bg-red-500 hover:text-white"

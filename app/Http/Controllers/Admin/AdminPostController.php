@@ -46,9 +46,10 @@ class AdminPostController extends Controller
     }
 
     public function update(Request $request, Post $post) {
+        // dd($request);
         $attributes = $request->validate([
             'category_id' => ['required', Rule::exists('categories', 'id')],
-            'title' => 'required|unique:posts,title',
+            'title' => 'required',
             'content' => 'required',
             'thumbnail' => 'image'
             
@@ -60,5 +61,12 @@ class AdminPostController extends Controller
         $post->update($attributes);
 
         return back()->with('success', 'Post Updated!');
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return back()->with('success', 'Post Deleted!');
     }
 }
