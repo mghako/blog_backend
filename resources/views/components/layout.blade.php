@@ -7,6 +7,10 @@
     <title>mrhako.me | Blog</title>
     <meta name="author" content="Htet Aung Ko @Saimon">
     <meta name="description" content="">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}">
+    <link rel="manifest" href="/site.webmanifest">
 
     <!-- Tailwind -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
@@ -22,6 +26,8 @@
     <script defer src="https://unpkg.com/alpinejs@3.3.4/dist/cdn.min.js"></script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    
+    @stack('custom-css')
 </head>
 <body class="bg-white font-family-karla">
     
@@ -62,13 +68,13 @@
 
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
                 <p class="text-xl font-semibold pb-5">About mrhako.me</p>
-                <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
-                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+                <p class="pb-2">Hello, I am glad that you are here. This is the place where i share my experiences and activities about programming. Thanks for visiting my blog.</p>
+                {{-- <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
                     Get to know us
-                </a>
+                </a> --}}
             </div>
 
-            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+            {{-- <div class="w-full bg-white shadow flex flex-col my-4 p-6">
                 <p class="text-xl font-semibold pb-5">Instagram</p>
                 <div class="grid grid-cols-3 gap-3">
                     <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
@@ -84,7 +90,7 @@
                 <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
                     <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
                 </a>
-            </div>
+            </div> --}}
 
         </aside>
 
@@ -92,5 +98,6 @@
 
     @include('partials._footer')
 
+    @stack('custom-js')
 </body>
 </html>
