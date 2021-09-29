@@ -1,16 +1,16 @@
 <x-layout>
-<article class="flex flex-col shadow my-4">
+<article class="container overflow-auto flex flex-col shadow my-4">
     <!-- Article Image -->
     <a href="#" class="hover:opacity-75">
-        <img src="{{asset('storage/'. $post->thumbnail)}}">
+        <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
-        <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">{{ $post->category->name }}</a>
+        <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">{{ $post->category->name}}</a>
         <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title }}</a>
         <p href="#" class="text-sm pb-8">
-            By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->author->name }}</a>, Published on {{ $post->published_at->diffForHumans() }}
+            By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->author->name }}</a>, Published on {{$post->published_at->diffForHumans()}}
         </p>
-        <pre>{{ $post->content }}</pre>
+        {!! $post->content !!}
     </div>
 </article>
 

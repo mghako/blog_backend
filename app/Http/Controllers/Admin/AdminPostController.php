@@ -46,7 +46,7 @@ class AdminPostController extends Controller
     }
 
     public function update(Request $request, Post $post) {
-        // dd($request);
+       
         $attributes = $request->validate([
             'category_id' => ['required', Rule::exists('categories', 'id')],
             'title' => 'required',
