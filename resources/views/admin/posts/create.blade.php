@@ -29,7 +29,7 @@
                 {{ old('content') ?? '' }}
             </textarea>
     
-            <div class="mb-6">
+            <div class="my-6">
                 <button type="submit" class="block mx-auto text-center border py-1 px-2 border-gray-400 rounded hover:bg-blue-800 hover:text-white focus:outline-none focus:ring focus:border-0" autocomplete="off" type="text">Publish</button>
             </div>
         </form>

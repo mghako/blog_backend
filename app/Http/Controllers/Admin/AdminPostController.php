@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\Rule;
 
 class AdminPostController extends Controller
@@ -33,7 +34,9 @@ class AdminPostController extends Controller
         $attributes['slug'] = $attributes['title'];
         $attributes['published_at'] = now();
         
-        Post::create($attributes);
+        $post = Post::create($attributes);
+        // add to cache
+        Cache::add('post'.$post->id, 3600);
 
         return redirect('/');
 
@@ -58,6 +61,9 @@ class AdminPostController extends Controller
             $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnail');
         }
         
+        // clear cache
+        cache()->forget('post'.$post->id);
+        // then update
         $post->update($attributes);
 
         return back()->with('success', 'Post Updated!');
@@ -65,6 +71,9 @@ class AdminPostController extends Controller
 
     public function destroy(Post $post)
     {
+        // clear cache
+        cache()->forget('post'.$post->id);
+        // then delete
         $post->delete();
 
         return back()->with('success', 'Post Deleted!');
