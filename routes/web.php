@@ -25,16 +25,18 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.s
 
 
 // Auth Controller
-Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+// Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+// Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+
 // Login Controller
 Route::get('login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('login', [LoginController::class, 'login'])->middleware('guest');
 Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
 
-Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('admin');
-Route::get('admin/posts/create', [AdminPostController::class, 'create'])->middleware('admin');
-Route::put('admin/posts/{post:slug}', [AdminPostController::class, 'update'])->middleware('admin');
-Route::post('admin/posts', [AdminPostController::class, 'store'])->middleware('admin');
-Route::get('admin/posts/{post:slug}/edit', [AdminPostController::class, 'edit'])->middleware('admin');
-Route::delete('admin/posts/{post:id}', [AdminPostController::class, 'destroy'])->middleware('admin');
+// Post Controller
+Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware(['auth','admin']);
+Route::get('admin/posts/create', [AdminPostController::class, 'create'])->middleware(['auth','admin']);
+Route::put('admin/posts/{post:slug}', [AdminPostController::class, 'update'])->middleware(['auth','admin']);
+Route::post('admin/posts', [AdminPostController::class, 'store'])->middleware(['auth','admin']);
+Route::get('admin/posts/{post:slug}/edit', [AdminPostController::class, 'edit'])->middleware(['auth','admin']);
+Route::delete('admin/posts/{post:id}', [AdminPostController::class, 'destroy'])->middleware(['auth','admin']);
