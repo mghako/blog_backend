@@ -16,6 +16,7 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
     public function show(Post $post) {
+
         $post = cache()->remember('post'.$post->id, 3600, function() use ($post) {
             return $post;
         });
