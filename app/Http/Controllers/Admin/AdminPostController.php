@@ -11,8 +11,11 @@ use Illuminate\Validation\Rule;
 class AdminPostController extends Controller
 {
     public function index() {
+        $posts = cache()->remember('posts', 3600, function() {
+            return Post::paginate(10);
+        });
         return view('admin.posts.index',[
-            'posts' => Post::paginate(10)
+            'posts' => $posts
         ]);
     }
 
@@ -36,8 +39,9 @@ class AdminPostController extends Controller
         
         $post = Post::create($attributes);
         // add to cache
+        cache()->forget('post'.$post->id);
         Cache::add('post'.$post->id, 3600);
-
+        cache()->forget('posts');
         return redirect('/');
 
     }

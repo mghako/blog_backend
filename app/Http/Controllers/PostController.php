@@ -11,6 +11,9 @@ use Illuminate\Validation\Rule;
 class PostController extends Controller
 {
     public function index(Request $request) {
+        // $posts = Cache::remember('posts', 3600, function() {
+        //     return Post::latest()->filter(request(['search', 'category']))->paginate(3);
+        // });
         $posts = Post::latest()->filter(request(['search', 'category']))->paginate(3);
         
         return view('posts.index', compact('posts'));
